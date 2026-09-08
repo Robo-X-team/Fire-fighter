@@ -70,8 +70,7 @@ cd Fire-fighter
 # 📸 Project
 
 ## 🤖 The Robot
-https://github.com/Robo-X-team/Fire-fighter/blob/main/img/photo_2026-09-08_22-20-21.jpg
-
+![Firefighter Robot](img/photo_2026-09-08_22-20-21.jpg)
 -->
 
 ---
