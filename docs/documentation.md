@@ -1,137 +1,187 @@
-Firefighter Robot — Technical Documentation
-
-Team: Robo-X Team
-Program: EAII Summer Camp
-Year: 2026
-Team Members: 11
-
+🔥 Firefighter Robot
+Technical Project Documentation
+	
+Team	Robo-X Team
+Program	EAII Summer Camp
+Year	2026
+Team Size	11 members
+Project Type	Educational Robotics
+Controller	Arduino Uno
+📖 Table of Contents
+1. Project Overview
+2. Objectives
+3. System Architecture
+4. Hardware
+5. Software
+6. Development Stages
+7. Final System
+8. Testing
+9. Challenges
+10. Team & Contributions
+11. Skills Developed
+12. Limitations
+13. Future Improvements
+14. Resources
+15. License
+16. Conclusion
 1. Project Overview
 
-The Firefighter Robot is a robotics project developed by the Robo-X Team at EAII Summer Camp 2026.
+The Firefighter Robot is a multi-stage robotic system developed by the Robo-X Team during EAII Summer Camp 2026.
 
-The goal of the project was to design and build a robot that could detect a simulated fire, move toward it, and activate a water-based extinguishing system.
+The project was designed to demonstrate how robotics can be used to detect and respond to a simulated fire.
 
-The robot was developed through five stages. Each stage introduced a new feature and allowed the team to test the system before moving to the next stage.
+The robot combines:
 
-Development progression
-Stage 1 → Basic Movement
-     ↓
-Stage 2 → Fire Detection
-     ↓
-Stage 3 → Water Extinguishing
-     ↓
-Stage 4 → Smoke Detection
-     ↓
-Stage 5 → Autonomous Navigation
+🚗 Mobile movement
+🔥 Flame detection
+💨 Smoke detection
+🧭 Obstacle detection
+💧 Water-based extinguishing
+🤖 Autonomous control
+
+Rather than developing the complete robot at once, we built it through five progressive stages.
+
+Stage 1
+Basic Movement
+      ↓
+Stage 2
+Fire Detection
+      ↓
+Stage 3
+Fire Extinguishing
+      ↓
+Stage 4
+Smoke Detection
+      ↓
+Stage 5
+Autonomous Navigation
+
+
+This approach allowed us to build, test, debug, and improve each subsystem before moving to the next stage.
 
 2. Objectives
 
-The main objectives of the project were:
+The project had several main objectives:
 
-Build a functional mobile robot.
-Control four DC motors.
+Build a functional four-wheel robotic platform.
+Control DC motors using an Arduino.
 Detect a simulated flame.
 Determine the approximate direction of the flame.
-Navigate toward the fire.
+Navigate toward the detected fire.
 Detect smoke/gas using an MQ-2 sensor.
 Detect obstacles using an ultrasonic sensor.
 Activate a water pump to extinguish the simulated fire.
-Integrate multiple sensors and actuators into one system.
-Develop practical robotics, programming, electronics, and teamwork skills.
+Integrate multiple sensors and actuators.
+Gain practical experience in robotics and engineering.
+Develop teamwork and problem-solving skills.
 3. System Architecture
 
-The Arduino Uno acts as the main controller.
+The Arduino Uno acts as the central controller.
 
-It receives information from the sensors and sends commands to the motors and other actuators.
+It receives input from the sensors, processes the information using programmed logic, and controls the robot's motors and extinguishing system.
 
-                    ┌───────────────────┐
-                    │    Arduino Uno    │
-                    │  Main Controller  │
-                    └─────────┬─────────┘
-                              │
-          ┌───────────────────┼───────────────────┐
-          │                   │                   │
-          ▼                   ▼                   ▼
-   Flame Sensors         MQ-2 Sensor        HC-SR04 Sensor
-   Fire Detection       Smoke Detection     Obstacle Detection
-          │                   │                   │
-          └───────────────────┼───────────────────┘
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │   Control Logic   │
-                    └─────────┬─────────┘
-                              │
-                  ┌───────────┴───────────┐
-                  │                       │
-                  ▼                       ▼
-           ┌─────────────┐       ┌─────────────┐
-           │ L298N Motor │       │ Extinguishing│
-           │ Driver      │       │ System       │
-           └──────┬──────┘       └──────┬──────┘
-                  │                     │
-                  ▼                     ▼
-             4 DC Motors          Pump + Servo
+                         ┌──────────────────┐
+                         │    ARDUINO UNO   │
+                         │  Main Controller │
+                         └────────┬─────────┘
+                                  │
+            ┌─────────────────────┼─────────────────────┐
+            │                     │                     │
+            ▼                     ▼                     ▼
+     ┌─────────────┐       ┌─────────────┐       ┌─────────────┐
+     │    Flame    │       │    MQ-2     │       │   HC-SR04   │
+     │   Sensors   │       │    Smoke    │       │  Ultrasonic │
+     └─────────────┘       └─────────────┘       └─────────────┘
+            │                     │                     │
+            └─────────────────────┼─────────────────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │   CONTROL LOGIC  │
+                         └────────┬─────────┘
+                                  │
+                    ┌─────────────┴─────────────┐
+                    │                           │
+                    ▼                           ▼
+             ┌─────────────┐             ┌─────────────┐
+             │     L298N   │             │ Extinguishing│
+             │ Motor Driver│             │    System    │
+             └──────┬──────┘             └──────┬──────┘
+                    │                           │
+                    ▼                           ▼
+               4 DC Motors                 Pump + Servo
 
-4. Hardware Components
-4.1 Arduino Uno
+4. Hardware
+4.1 Component Overview
+Component	Purpose
+Arduino Uno	Main controller
+L298N	Motor control
+4 × DC Motors	Robot movement
+Flame Sensors	Fire detection
+MQ-2 Sensor	Smoke/gas detection
+HC-SR04	Obstacle detection
+Servo Motor	Extinguishing mechanism positioning
+Water Pump	Moves water to the nozzle
+Water Tank	Stores water
+LED	Status indication
+Battery	Power source
+Breadboard	Circuit connections
+Jumper Wires	Electrical connections
+4.2 Arduino Uno
 
-The Arduino Uno is the main microcontroller.
+The Arduino Uno is responsible for coordinating the robot.
 
-It processes sensor readings and controls the robot's movement and other components.
+Its main tasks include:
 
-4.2 L298N Motor Driver
+Reading sensor values
+Processing sensor information
+Controlling motor movement
+Controlling the servo
+Activating the water pump
+Executing the programmed control logic
+4.3 L298N Motor Driver
 
-The L298N provides motor control between the Arduino and the four DC motors.
+The L298N provides the connection between the Arduino and the DC motors.
 
-It allows the robot to control motor direction and movement.
+It allows the robot to control the direction and movement of the motors.
 
-4.3 DC Motors
+The Arduino provides the control signals while the motor driver handles the motor control.
 
-Four DC motors provide movement for the robot.
-
-The motors allow the robot to move:
-
-Forward
-Backward
-Left
-Right
-Stop
 4.4 Flame Sensors
 
-Flame sensors detect the presence and approximate direction of a simulated flame.
+Flame sensors are used to detect a simulated fire.
 
-Multiple sensors allow the robot to compare readings from different directions.
+Multiple sensors allow the robot to compare readings from different directions and determine where the flame is located.
 
-4.5 MQ-2 Sensor
+4.5 MQ-2 Smoke Sensor
 
-The MQ-2 smoke/gas sensor was introduced during Stage 4.
+The MQ-2 sensor was introduced during Stage 4.
 
-It provides additional environmental information that can be used alongside the flame sensors.
+It provides smoke/gas detection and gives the robot additional environmental information.
 
 4.6 HC-SR04 Ultrasonic Sensor
 
 The HC-SR04 is used for obstacle detection.
 
-It measures the distance between the robot and nearby objects.
+It measures the distance between the robot and nearby objects, allowing the robot to react when an obstacle is detected.
 
-4.7 Servo Motor
+4.7 Water Extinguishing System
 
-The servo is part of the water-extinguishing mechanism and is used to control the position of the mechanism/nozzle.
+The extinguishing system consists of:
 
-4.8 Water Pump
+Water tank
+Water pump
+Servo motor
+Tubing
+Nozzle
 
-The water pump moves water from the tank through the tubing and nozzle.
-
-It is activated when the robot performs the extinguishing sequence.
+The pump moves water from the tank through the tubing while the servo controls the position of the mechanism.
 
 5. Software
 
 The robot was programmed using Arduino/C++.
 
-The software was developed incrementally rather than creating the complete program at once.
-
-Each stage has its own .ino file:
+The software was developed progressively, with a separate program for each stage.
 
 code/
 ├── stage1.ino
@@ -141,11 +191,13 @@ code/
 └── stage5.ino
 
 
-This makes it possible to see how the robot's software developed over time.
+Each file represents a milestone in the robot's development.
 
-6. Stage 1 — Basic Movement
+6. Development Stages
+🟢 Stage 1 — Basic Movement
+Goal
 
-The first stage focused on controlling the robot's movement.
+Create a reliable mobile platform.
 
 Components
 Arduino Uno
@@ -154,92 +206,95 @@ Four DC motors
 Battery
 Functions
 
-The program controls the motors to perform:
+The robot was programmed to:
 
-Forward
-Backward
-Left
-Right
+Move forward
+Move backward
+Turn left
+Turn right
 Stop
+Result
 
-Development Goal
+The team established the basic movement system that became the foundation for later stages.
 
-The main goal was to create a reliable movement system that could be used as the foundation for the later stages.
+🔴 Stage 2 — Fire Detection
+Goal
 
-7. Stage 2 — Fire Detection
+Enable the robot to detect and approach a simulated fire.
 
-Stage 2 introduced flame sensors.
-
-The robot could detect a simulated flame and determine its approximate direction.
-
-Basic control process
-Read Flame Sensors
-       ↓
+Components Added
+Flame sensors
+Process
+Read Sensors
+     ↓
 Flame Detected?
-       ↓
+     ↓
 Determine Direction
-       ↓
+     ↓
 Turn Toward Flame
-       ↓
+     ↓
 Move Forward
 
+Result
 
-The robot's movement could therefore respond to its environment instead of following only predetermined commands.
+The robot could react to the detected direction of a simulated flame.
 
-8. Stage 3 — Fire Extinguishing
+🔵 Stage 3 — Fire Extinguishing
+Goal
 
-Stage 3 introduced the water-extinguishing system.
+Add the ability to respond to the detected fire.
 
-Components added
+Components Added
 Water tank
 Water pump
-Servo motor
+Servo
 Tubing
 Nozzle
-Operation
-
-Once the robot approaches the simulated fire, the extinguishing mechanism can be activated.
-
+Process
 Detect Fire
      ↓
 Approach Fire
      ↓
 Stop
      ↓
-Position Extinguishing System
+Position Nozzle
      ↓
 Activate Pump
      ↓
 Spray Water
 
+Result
 
-This stage transformed the robot from a detection system into a response system.
+The robot gained a water-based fire-extinguishing capability.
 
-9. Stage 4 — Smoke Detection
+🟡 Stage 4 — Smoke Detection
+Goal
 
-Stage 4 introduced an MQ-2 smoke/gas sensor.
+Add another method of detecting fire-related environmental conditions.
 
-The purpose was to provide an additional method of detecting environmental conditions associated with a simulated fire.
+Component Added
+MQ-2 smoke/gas sensor
+Process
+Read MQ-2
+     ↓
+Evaluate Reading
+     ↓
+Combine With Other Sensor Data
+     ↓
+Continue Fire Response
 
-Basic process
-Read MQ-2 Sensor
-       ↓
-Evaluate Sensor Reading
-       ↓
-Combine With Other Sensor Information
-       ↓
-Fire Response
+Result
 
+The robot gained an additional environmental sensing capability.
 
-The additional sensor increased the amount of environmental information available to the robot.
+🟣 Stage 5 — Autonomous Navigation
+Goal
 
-10. Stage 5 — Autonomous Navigation
+Improve the robot's ability to navigate its environment.
 
-Stage 5 introduced obstacle detection using an HC-SR04 ultrasonic sensor.
-
-The robot could use distance information to identify obstacles and adjust its movement.
-
-Basic navigation process
+Component Added
+HC-SR04 ultrasonic sensor
+Process
 Move Forward
      ↓
 Check Distance
@@ -254,127 +309,108 @@ Move     Stop
           ↓
       Continue
 
+Result
 
-The final stage combined the navigation system with the other capabilities developed previously.
+The robot gained obstacle detection and navigation capabilities.
 
-11. Final Robot Operation
+7. Final System
 
-The final system follows a general sequence:
+The final system combines the capabilities developed throughout all five stages.
 
-START
-  ↓
-Navigate
-  ↓
-Check for Obstacles
-  ↓
-Avoid Obstacles if Necessary
-  ↓
-Detect Smoke
-  ↓
-Detect Flame
-  ↓
-Determine Fire Direction
-  ↓
-Approach Fire
-  ↓
-Stop
-  ↓
-Activate Extinguishing System
-  ↓
-Spray Water
-  ↓
-END
+Final Mission
+┌─────────────┐
+│    START    │
+└──────┬──────┘
+       ↓
+┌─────────────┐
+│  Navigate   │
+└──────┬──────┘
+       ↓
+┌─────────────┐
+│Check for    │
+│  Obstacles  │
+└──────┬──────┘
+       ↓
+┌─────────────┐
+│Detect Smoke │
+└──────┬──────┘
+       ↓
+┌─────────────┐
+│Detect Flame │
+└──────┬──────┘
+       ↓
+┌─────────────┐
+│   Approach  │
+│     Fire    │
+└──────┬──────┘
+       ↓
+┌─────────────┐
+│    STOP     │
+└──────┬──────┘
+       ↓
+┌─────────────┐
+│Activate Pump│
+└──────┬──────┘
+       ↓
+┌─────────────┐
+│  Spray Water│
+└──────┬──────┘
+       ↓
+     END
 
 
-The exact behavior depends on the sensor readings and the control logic implemented in the final program.
+Note: The robot was designed and tested as an educational prototype using a simulated fire environment.
 
-12. Structure Diagram
+8. Testing
 
-The project's system structure and wiring can be documented using the structure diagram included with the project.
+Testing was performed throughout the development process.
 
-The interactive project website also contains additional project information:
+Each new feature was tested before moving to the next stage.
 
-Project Website:
-https://fire-fighter-rho.vercel.app/
+Stage	Main Test
+1	Movement and motor control
+2	Flame detection and direction
+3	Pump, servo, and water flow
+4	MQ-2 sensor response
+5	Obstacle detection and navigation
+Testing Method
 
-13. Testing
+The general testing cycle was:
 
-Testing was performed progressively throughout development.
-
-Instead of waiting until the final stage, each major feature was tested after implementation.
-
-Stage 1
-
-Movement was tested by checking:
-
-Forward movement
-Backward movement
-Left turns
-Right turns
-Stopping
-Stage 2
-
-The flame sensors were tested with the simulated fire positioned in different directions.
-
-The team observed whether the robot responded appropriately.
-
-Stage 3
-
-The water system was tested to verify:
-
-Pump activation
-Water flow
-Servo movement
-Extinguishing mechanism operation
-Stage 4
-
-The MQ-2 sensor was tested in the intended simulated environment.
-
-Stage 5
-
-The ultrasonic sensor was tested by placing obstacles at different distances from the robot.
-
-14. Challenges
-
-During development, the team encountered challenges involving:
-
-Motor control
-Sensor readings
-Electrical wiring
-Power management
-Programming logic
-Hardware/software integration
-Physical placement of components
-Testing the complete system
-
-The staged development process helped the team isolate problems and address them individually.
-
-15. Development Methodology
-
-The team used an iterative development approach.
-
-Design
-  ↓
 Build
   ↓
 Test
   ↓
-Find Problems
+Observe
+  ↓
+Identify Problem
   ↓
 Debug
   ↓
 Improve
   ↓
-Next Stage
+Retest
 
+9. Challenges
 
-This approach made it easier to identify problems early and improve the robot gradually.
+During development, the team worked through challenges involving:
 
-16. Team Contributions
+Motor control
+Sensor readings
+Wiring
+Power management
+Programming logic
+Hardware positioning
+Sensor integration
+Combining multiple subsystems
+
+Breaking the project into five stages made it easier to isolate problems and solve them individually.
+
+10. Team & Contributions
 
 The project was developed collaboratively by an 11-member team.
 
-Different members contributed to different areas, including:
+Team members contributed to areas such as:
 
 Programming
 Electronics
@@ -384,114 +420,128 @@ Motor control
 Testing
 Troubleshooting
 Documentation
+Team Members
+#	Name
+1	Abubeker Amru
+2	Amar Bahredin
+3	Amen Yordanos
+4	Biniyam Sisay
+5	Delina Gebresilassie
+6	Eyosiyas Abiyot
+7	Fayo Ibrahim
+8	Irfan Jibril
+9	Nathan Samuel
+10	Natnael Solomon
+11	Samuel Abeselom
 
-Individual contributions should be documented here according to the actual work performed by each team member.
+Contribution details can be added once the individual responsibilities of each team member are documented.
 
-17. Team Members
-Abubeker Amru
-Amar Bahredin
-Amen Yordanos
-Biniyam Sisay
-Delina Gebresilassie
-Eyosiyas Abiyot
-Fayo Ibrahim
-Irfan Jibril
-Nathan Samuel
-Natnael Solomon
-Samuel Abeselom
-18. Skills Developed
-
-The project provided hands-on experience in:
-
-Programming
+11. Skills Developed
+💻 Programming
 Arduino
 C/C++
 Conditional logic
-Sensor input
+Sensor processing
 Motor control
-Robotics
+🤖 Robotics
 Mobile robotics
 Sensor integration
 Autonomous navigation
 Actuator control
-Electronics
+⚡ Electronics
 Motor drivers
 Sensors
 Wiring
 Power systems
-Troubleshooting
-Engineering
+Hardware troubleshooting
+🛠️ Engineering
 Prototyping
 Iterative development
 Testing
 Debugging
 System integration
-Teamwork
-Collaborative development
-Dividing responsibilities
+👥 Collaboration
+Team-based development
+Task division
 Communication
 Coordinating multiple subsystems
-19. Limitations
+12. Limitations
 
-This robot is an educational prototype designed for a simulated fire environment.
+This project is an educational prototype and was designed for a simulated fire environment.
 
-It is not intended to replace professional firefighting equipment.
+It is not professional firefighting equipment.
 
-Potential limitations include:
+Current limitations include:
 
 Limited sensor range
 Limited water capacity
 Battery limitations
 Simplified fire-detection logic
 Limited navigation capabilities
-Sensor readings can be affected by environmental conditions
-20. Future Improvements
+Environmental effects on sensor readings
+13. Future Improvements
 
-Future versions could include:
+Possible future improvements include:
 
-Camera-based fire detection
-Improved flame localization
-More advanced obstacle avoidance
-Wireless monitoring
-Real-time telemetry
-Improved water targeting
-Larger water capacity
-More efficient power management
-More advanced navigation algorithms
-Automatic return-to-base functionality
-21. Project Resources
-GitHub Repository
+📷 Camera-based fire detection
+🧭 More advanced autonomous navigation
+🔥 Improved flame localization
+🚧 Better obstacle avoidance
+📡 Wireless monitoring
+📊 Real-time telemetry
+💧 More accurate water targeting
+🔋 Improved power management
+🗺️ Mapping and navigation
+🏠 Automatic return-to-base functionality
+14. Project Resources
+💻 GitHub
+
+Source code and project files:
 
 https://github.com/Robo-X-team/Fire-fighter
 
-Project Website
+🌐 Project Website
+
+Interactive project documentation:
 
 https://fire-fighter-rho.vercel.app/
 
-Source Code
+📁 Source Code
 
-The Arduino programs for all five development stages are located in the code directory.
+The five Arduino programs are located in:
 
-22. License
+code/
+├── stage1.ino
+├── stage2.ino
+├── stage3.ino
+├── stage4.ino
+└── stage5.ino
+
+15. License
 
 This project is licensed under the MIT License.
 
-See the LICENSE file for the complete license text.
+See the LICENSE file for the complete license terms.
 
-23. Conclusion
+16. Conclusion
 
-The Firefighter Robot project demonstrates how a complex robotic system can be developed through incremental stages.
+The Firefighter Robot project demonstrates how a complex robotic system can be developed through incremental engineering stages.
 
-Starting with basic movement, the team progressively introduced fire detection, water extinguishing, smoke detection, and autonomous navigation.
+Beginning with basic movement, the team progressively added:
 
-The project provided practical experience in robotics, programming, electronics, testing, debugging, system integration, and teamwork.
+Movement → Fire Detection → Extinguishing → Smoke Detection → Autonomous Navigation
 
-The five-stage development process allowed the team to build and test individual capabilities before integrating them into the final robotic system.
+The project provided practical experience in programming, electronics, robotics, testing, debugging, system integration, and teamwork.
 
-Project Information
+Most importantly, the project demonstrated an iterative engineering approach:
+
+Design → Build → Test → Debug → Improve
+
+The final result was an educational robotic platform integrating multiple sensors, motors, and actuators into a single system.
+
+🏕️ Project Information
 
 Robo-X Team
-EAII Summer Camp
-2026
+EAII Summer Camp — 2026
 
-Design. Build. Test. Improve.
+Design. Build. Test. Improve. 🔥🤖
