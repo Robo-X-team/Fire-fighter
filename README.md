@@ -83,7 +83,8 @@ cd Fire-fighter
 
 ## 🧪 Testing
 
-> Add photos or videos showing the robot being tested here.
+![Firefighter Robot](img/![Firefighter Robot](img/photo_2026-09-08_22-20-21.jpg)
+-->
 
 ---
 
