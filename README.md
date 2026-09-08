@@ -70,11 +70,8 @@ cd Fire-fighter
 # 📸 Project
 
 ## 🤖 The Robot
+photo_2026-09-08_22-20-21.jpg
 
-> Add a photo of the completed Firefighter Robot here.
-
-<!-- Example:
-![Firefighter Robot](img/robot.jpg)
 -->
 
 ---
