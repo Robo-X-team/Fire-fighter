@@ -1,18 +1,12 @@
-<div align="center">
 🔥🤖 Firefighter Robot
 
 A semi-autonomous firefighter robot designed, built, and programmed by an 11-member team at EAII Summer Camp 2026.
 
-</div>
-
 Our goal was to develop a robot capable of detecting a simulated fire, navigating toward it, and extinguishing it. We developed the robot progressively through five stages, testing and improving the system at each step.
 
 🌐 Project Links
-<div align="center">
-🔗	Project
-📦	https://github.com/lordcode-dev/Fire-fighter/
-🌐	https://fire-fighter-rho.vercel.app/
-</div>
+GitHub Repository: https://github.com/lordcode-dev/Fire-fighter/
+Project Website: https://fire-fighter-rho.vercel.app/
 📥 Clone the Repository
 
 To download the project and its source code:
@@ -22,67 +16,57 @@ cd Fire-fighter
 
 📸 Project
 The Robot
+
 Building & Development
+
 Testing
+
 🚀 Development Stages
-1️⃣ Stage 1 — Basic Movement
+Stage 1 — Basic Movement
 
 We developed the robot's basic movement system using an Arduino Uno, motor driver, and four DC motors.
 
 The robot was programmed to move forward, backward, and turn left and right.
 
-2️⃣ Stage 2 — Fire Detection
+Stage 2 — Fire Detection
 
 We introduced flame sensors to allow the robot to detect the direction of a simulated fire.
 
 The robot could use the sensor readings to determine where the flame was located and move toward it.
 
-3️⃣ Stage 3 — Fire Extinguishing
+Stage 3 — Fire Extinguishing
 
 We added a water-based extinguishing system consisting of a water tank, pump, servo motor, tubing, and nozzle.
 
 The robot could approach the detected fire and activate the water system.
 
-4️⃣ Stage 4 — Smoke Detection
+Stage 4 — Smoke Detection
 
 An MQ-2 smoke/gas sensor was integrated into the system to provide additional environmental detection.
 
 This stage expanded the robot's ability to identify conditions associated with a simulated fire.
 
-5️⃣ Stage 5 — Autonomous Navigation
+Stage 5 — Autonomous Navigation
 
 The final stage added obstacle detection and navigation using an HC-SR04 ultrasonic sensor.
 
 The completed system combined the capabilities developed throughout the previous stages.
 
 Final mission:
-╭──────────────────────────╮
-│         Navigate         │
-╰────────────┬─────────────╯
-             ↓
-╭──────────────────────────╮
-│    Avoid Obstacles       │
-╰────────────┬─────────────╯
-             ↓
-╭──────────────────────────╮
-│       Detect Smoke       │
-╰────────────┬─────────────╯
-             ↓
-╭──────────────────────────╮
-│       Detect Flame       │
-╰────────────┬─────────────╯
-             ↓
-╭──────────────────────────╮
-│      Approach Fire       │
-╰────────────┬─────────────╯
-             ↓
-╭──────────────────────────╮
-│          Stop            │
-╰────────────┬─────────────╯
-             ↓
-╭──────────────────────────╮
-│   Activate Water System  │
-╰──────────────────────────╯
+
+Navigate
+   ↓
+Avoid Obstacles
+   ↓
+Detect Smoke
+   ↓
+Detect Flame
+   ↓
+Approach Fire
+   ↓
+Stop
+   ↓
+Activate Water System
 
 🔌 System Structure
 
@@ -105,7 +89,6 @@ code/
 The five programs demonstrate how the robot evolved from basic movement into the final integrated system.
 
 🧰 Hardware
-Component
 Arduino Uno
 L298N motor driver
 4 DC motors
@@ -119,24 +102,20 @@ LED
 Battery
 Breadboard and jumper wires
 🧠 Skills & Technologies
-<div align="center">
-	
-🤖	Arduino / Embedded Programming
-💻	C/C++
-🦾	Robotics
-⚡	Electronics
-📡	Sensor Integration
-⚙️	Motor Control
-🧭	Autonomous Navigation
-🔧	Hardware Troubleshooting
-🔗	System Integration
-👥	Team Collaboration
-</div>
+Arduino / Embedded Programming
+C/C++
+Robotics
+Electronics
+Sensor Integration
+Motor Control
+Autonomous Navigation
+Hardware Troubleshooting
+System Integration
+Team Collaboration
 👥 Team
 
 This project was developed collaboratively by:
 
-Team Members
 Abubeker Amru
 Amar Bahredin
 Amen Yordanos
@@ -149,6 +128,7 @@ Nathan Samuel
 Natnael Solomon
 Samuel Abeselom
 🏕️ Project Background
+
 EAII Summer Camp — 2026
 
 The project was developed as a hands-on robotics project where our team learned to design, program, build, test, and improve a working robotic system.
@@ -170,37 +150,23 @@ Rather than attempting to build the complete robot at once, we divided the proje
 
 This allowed us to build, test, identify problems, and improve the system at each stage before moving forward.
 
-<div align="center">
-┌─────────────────────────┐
-│ Stage 1                 │
-│ Basic Movement          │
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│ Stage 2                 │
-│ Fire Detection          │
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│ Stage 3                 │
-│ Water Extinguishing     │
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│ Stage 4                 │
-│ Smoke Detection         │
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│ Stage 5                 │
-│ Autonomous Navigation   │
-└─────────────────────────┘
+Stage 1
+Basic Movement
+    ↓
+Stage 2
+Fire Detection
+    ↓
+Stage 3
+Water Extinguishing
+    ↓
+Stage 4
+Smoke Detection
+    ↓
+Stage 5
+Autonomous Navigation
 
-</div>
 ⭐ Project Outcome
 
 The final result was a working firefighter robot that combined multiple sensing, movement, navigation, and extinguishing systems into one robotic platform.
 
-<div align="center">
 Built by our team at EAII Summer Camp 2026.
-</div>
